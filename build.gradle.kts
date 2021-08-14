@@ -1,6 +1,10 @@
-val ktor_version: String by project
-val kotlin_version: String by project
-val logback_version: String by project
+val ktorVersion: String by project
+val kotlinVersion: String by project
+val logbackVersion: String by project
+val mockkVersion: String by project
+val kotestVersion: String by project
+val redmineApiVersion: String by project
+val apacheCommonsVersion: String by project
 
 plugins {
     application
@@ -21,24 +25,21 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
-    implementation("io.ktor:ktor-server-netty:$ktor_version")
-    implementation("ch.qos.logback:logback-classic:$logback_version")
-    implementation("io.ktor:ktor-server-core:$ktor_version")
-    implementation("io.ktor:ktor-jackson:$ktor_version")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.7")
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7")
-    implementation("com.squareup.retrofit2:retrofit:2.3.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion")
+    implementation("io.ktor:ktor-server-netty:$ktorVersion")
+    implementation("ch.qos.logback:logback-classic:$logbackVersion")
+    implementation("io.ktor:ktor-server-core:$ktorVersion")
+    implementation("io.ktor:ktor-jackson:$ktorVersion")
 
-    implementation("io.ktor:ktor-client-okhttp:$ktor_version")
-    implementation("io.ktor:ktor-client-json:$ktor_version")
-    implementation("io.ktor:ktor-client-serialization-jvm:$ktor_version")
-    implementation("io.ktor:ktor-client-logging-jvm:$ktor_version")
-    compile("com.taskadapter:redmine-java-api:4.0.0.preview.3")
-    implementation("org.apache.commons:commons-lang3:3.12.0")
-    testImplementation("io.kotest:kotest-runner-junit5-jvm:4.4.3")
-    testImplementation("io.mockk:mockk:1.10.6")
-    testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+    implementation("io.ktor:ktor-client-okhttp:$ktorVersion")
+    implementation("io.ktor:ktor-client-json:$ktorVersion")
+    implementation("io.ktor:ktor-client-serialization-jvm:$ktorVersion")
+    implementation("io.ktor:ktor-client-logging-jvm:$ktorVersion")
+    compile("com.taskadapter:redmine-java-api:$redmineApiVersion")
+    implementation("org.apache.commons:commons-lang3:$apacheCommonsVersion")
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("io.ktor:ktor-server-tests:$ktorVersion")
 }
 
 tasks.test {
@@ -50,3 +51,4 @@ kotlin.sourceSets["test"].kotlin.srcDirs("test")
 
 sourceSets["main"].resources.srcDirs("resources")
 sourceSets["test"].resources.srcDirs("testresources")
+
